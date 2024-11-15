@@ -15,3 +15,11 @@ export type UserType = {
 }
 
 export type UserDocument = UserType & Document
+
+export type MessageType = {
+    sender: mongoose.Schema.Types.ObjectId,
+    receiver: mongoose.Schema.Types.ObjectId,
+    content: string
+}
+
+export type MessageDocument = MessageType & Document
