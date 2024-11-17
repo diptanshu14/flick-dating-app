@@ -6,11 +6,6 @@ interface AuthenticateRequest extends Request {
     user?: UserDocument | null
 }
 
-export const getMe = async (req: AuthenticateRequest, res: Response) => {
-    res.send({ success: true, user: req.user })
-}
-
-
 export const updateProfile = async (req: AuthenticateRequest, res: Response) => {
     if (!req.user) {
         res.status(404).json({ success:false, message:"User not found" })

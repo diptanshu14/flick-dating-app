@@ -1,5 +1,14 @@
-import { Request, Response } from "express";
-import { loginService, signupService } from "../services/auth.services";
+import { Request, Response } from "express"
+import { loginService, signupService } from "../services/auth.services"
+import { UserDocument } from "../lib/types"
+
+interface AuthenticateRequest extends Request {
+    user?: UserDocument | null
+}
+
+export const getMe = async (req: AuthenticateRequest, res: Response) => {
+    res.send({ success: true, user: req.user })
+}
 
 export const signup = async (req: Request, res: Response) => {
     const { name, email, password, age, gender, genderPreference } = req.body
